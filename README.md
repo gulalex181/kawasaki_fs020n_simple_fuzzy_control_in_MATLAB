@@ -1,0 +1,1 @@
+Simple fuzzy controller of Kawasaki FS020N robotic arm
