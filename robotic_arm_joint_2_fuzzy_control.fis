@@ -1,0 +1,61 @@
+[System]
+Name='robotic_arm_joint_2_fuzzy_control'
+Type='mamdani'
+Version=2.0
+NumInputs=2
+NumOutputs=1
+NumRules=17
+AndMethod='min'
+OrMethod='max'
+ImpMethod='min'
+AggMethod='max'
+DefuzzMethod='centroid'
+
+[Input1]
+Name='error'
+Range=[-2.094 2.094]
+NumMFs=5
+MF1='NB':'gaussmf',[0.4448 -2.094]
+MF2='NS':'gaussmf',[0.4448 -1.047]
+MF3='Z':'gaussmf',[0.4448 4.363e-05]
+MF4='PS':'gaussmf',[0.4448 1.047]
+MF5='PB':'gaussmf',[0.4448 2.094]
+
+[Input2]
+Name='velocity'
+Range=[-5 5]
+NumMFs=5
+MF1='NB':'gaussmf',[1.062 -5]
+MF2='NS':'gaussmf',[1.062 -2.5]
+MF3='Z':'gaussmf',[1.062 0.04049]
+MF4='PS':'gaussmf',[1.062 2.5]
+MF5='PB':'gaussmf',[1.062 5]
+
+[Output1]
+Name='torque_coef'
+Range=[-1 1]
+NumMFs=5
+MF1='NB':'gaussmf',[0.2123 -1]
+MF2='NS':'gaussmf',[0.2123 -0.5]
+MF3='Z':'gaussmf',[0.2123 0]
+MF4='PS':'gaussmf',[0.2123 0.5]
+MF5='PB':'gaussmf',[0.2123 1]
+
+[Rules]
+1 0, 1 (1) : 1
+2 1, 1 (1) : 1
+2 2, 1 (1) : 1
+2 3, 2 (1) : 1
+2 4, 2 (1) : 1
+2 5, 3 (1) : 1
+3 1, 5 (1) : 1
+3 2, 4 (1) : 1
+3 3, 3 (1) : 1
+3 4, 2 (1) : 1
+3 5, 1 (1) : 1
+4 1, 3 (1) : 1
+4 2, 4 (1) : 1
+4 3, 4 (1) : 1
+4 4, 5 (1) : 1
+4 5, 5 (1) : 1
+5 0, 5 (1) : 1
